@@ -1,28 +1,27 @@
-
-import { IsString, IsOptional, MaxLength, IsEmail, IsPhoneNumber } from 'class-validator';
+// src/group/dto/create-group.dto.ts
+import { IsString, IsOptional, IsBoolean, IsEmail } from 'class-validator';
 
 export class CreateGroupDto {
-    @IsString()
-    @MaxLength(60)
-    name: string;
+  @IsString()
+  name: string;
 
-    @IsOptional()
-    @IsString()
-    @MaxLength(120)
-    address?: string;
+  @IsOptional()
+  @IsString()
+  address?: string;
 
-    @IsOptional()
-    @IsString()
-    @MaxLength(50)
-    responsible_person?: string;
+  @IsOptional()
+  @IsString()
+  responsible_person?: string;
 
-    @IsOptional()
-    @IsEmail()
-    @MaxLength(40)
-    email?: string;
+  @IsOptional()
+  @IsEmail()
+  email?: string;
 
-    @IsOptional()
-    @IsString()
-    @MaxLength(20)
-    mobile_no?: string;
+  @IsOptional()
+  @IsString()
+  mobile_no?: string;
+
+  @IsOptional()
+  @IsBoolean()
+  status?: boolean;
 }

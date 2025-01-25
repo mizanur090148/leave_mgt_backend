@@ -12,12 +12,19 @@ export class GroupService {
   ) {}
 
   async create(createGroupDto: CreateGroupDto): Promise<Group> {
-    const group = this.groupRepository.create(createGroupDto); // Create a new Group entity from the DTO
-    return this.groupRepository.save(group); // Save the entity to the database
+    // Create a new Group entity using object spreading
+    const group = this.groupRepository.create({
+      ...createGroupDto, // Spread all properties from the DTO
+      created_at: new Date(), // Add any additional properties required by the entity
+      updated_at: new Date(),
+    });
+
+    // Save the entity to the database
+    return await this.groupRepository.save(group);
   }
 
-  findAll() {
-    return `This action returns all group`;
+  async findAll(): Promise<Group[]> {
+    return await this.groupRepository.find({});
   }
 
   findOne(id: number) {

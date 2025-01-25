@@ -1,38 +1,35 @@
-import {
-  Entity,
-  PrimaryGeneratedColumn,
-  Column,
-  CreateDateColumn,
-  UpdateDateColumn,
-  DeleteDateColumn,
-} from 'typeorm';
+// src/group/entities/group.entity.ts
+import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
 @Entity('groups')
 export class Group {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ length: 60 })
+  @Column()
   name: string;
 
-  @Column({ length: 120, nullable: true })
+  @Column({ nullable: true })
   address: string;
 
-  @Column({ length: 50, nullable: true })
+  @Column({ nullable: true })
   responsible_person: string;
 
-  @Column({ length: 40, nullable: true })
+  @Column({ nullable: true })
   email: string;
 
-  @Column({ length: 20, nullable: true })
+  @Column({ nullable: true })
   mobile_no: string;
 
-  @CreateDateColumn()
+  @Column({ default: false })
+  status: boolean;
+
+  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   created_at: Date;
 
-  @UpdateDateColumn()
+  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP', onUpdate: 'CURRENT_TIMESTAMP' })
   updated_at: Date;
 
-  @DeleteDateColumn()
+  @Column({ type: 'timestamp', nullable: true })
   deleted_at: Date;
 }

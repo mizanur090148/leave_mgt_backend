@@ -3,17 +3,19 @@ import { GroupService } from './group.service';
 import { CreateGroupDto } from './dto/create-group.dto';
 import { UpdateGroupDto } from './dto/update-group.dto';
 
-@Controller('group')
+@Controller('groups')
 export class GroupController {
   constructor(private readonly groupService: GroupService) {}
 
   @Post()
   create(@Body() createGroupDto: CreateGroupDto) {
+    console.log(999);
     return this.groupService.create(createGroupDto);
   }
 
   @Get()
   findAll() {
+    console.log(1111);
     return this.groupService.findAll();
   }
 
