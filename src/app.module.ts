@@ -4,6 +4,8 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { GroupModule } from './group/group.module';
+import { CompanyModule } from './company/company.module';
+import { LeaveModule } from './leave/leave.module';
 
 @Module({
   imports: [
@@ -23,6 +25,8 @@ import { GroupModule } from './group/group.module';
       }),
     }),
     GroupModule,
+    CompanyModule,
+    LeaveModule,
   ],
   controllers: [AppController],
   providers: [AppService],

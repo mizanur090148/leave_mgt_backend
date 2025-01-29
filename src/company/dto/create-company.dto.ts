@@ -1,7 +1,6 @@
-// src/group/dto/create-group.dto.ts
-import { IsString, IsOptional, IsBoolean, IsEmail, Length } from 'class-validator';
+import { IsString, IsNumber, IsOptional, IsBoolean, IsEmail, Length } from 'class-validator';
 
-export class CreateGroupDto {
+export class CreateCompanyDto {
   @IsString()
   @Length(3, 50)
   name: string;
@@ -23,6 +22,11 @@ export class CreateGroupDto {
   mobile_no?: string;
 
   @IsOptional()
+  @IsNumber()
+  group_id?: number | null;
+
+  @IsOptional()
   @IsBoolean()
   status?: boolean;
 }
+
